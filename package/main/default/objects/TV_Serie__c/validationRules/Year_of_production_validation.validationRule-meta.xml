@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Year_of_production_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+Value(Year_of_production__c) &gt; Year(TODAY()),
+Value(Year_of_production__c) &lt; 1895,
+LEN(Year_of_production__c) != 4
+)</errorConditionFormula>
+    <errorDisplayField>Year_of_production__c</errorDisplayField>
+    <errorMessage>The year of production is invalid!</errorMessage>
+</ValidationRule>
