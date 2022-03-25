@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>InnovativeFlix</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Episode__c.Description__c</members>
+        <members>Episode__c.Episode_Name__c</members>
+        <members>Episode__c.Season__c</members>
+        <members>Episode__c.TV_Serie__c</members>
+        <members>Review__c.Comment__c</members>
+        <members>Review__c.Rating__c</members>
+        <members>Review__c.TV_Serie__c</members>
+        <members>Season__c.Sesaon_Name__c</members>
+        <members>Season__c.TV_Serie__c</members>
+        <members>TV_Serie__c.Creators__c</members>
+        <members>TV_Serie__c.Description__c</members>
+        <members>TV_Serie__c.Genres__c</members>
+        <members>TV_Serie__c.Logo__c</members>
+        <members>TV_Serie__c.Logo_url__c</members>
+        <members>TV_Serie__c.Rating__c</members>
+        <members>TV_Serie__c.Rating_sum__c</members>
+        <members>TV_Serie__c.Reviews__c</members>
+        <members>TV_Serie__c.Trailer__c</members>
+        <members>TV_Serie__c.Year_of_production__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Episode__c</members>
+        <members>Review__c</members>
+        <members>Season__c</members>
+        <members>TV_Serie__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Episode__c</members>
+        <members>Review__c</members>
+        <members>Season__c</members>
+        <members>TV_Serie__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>InnovativeFlix_UtilityBar</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>Episode__c-Episode Layout</members>
+        <members>Episode__c-Standard User Layout</members>
+        <members>Review__c-Review Layout</members>
+        <members>Season__c-Season Layout</members>
+        <members>TV_Serie__c-Standard User Layout</members>
+        <members>TV_Serie__c-TV Serie Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Episode__c.All</members>
+        <members>Review__c.All</members>
+        <members>Season__c.All</members>
+        <members>TV_Serie__c.All</members>
+        <name>ListView</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>Experience Cloud User</members>
+        <name>Profile</name>
+    </types>
+    <version>53.0</version>
+</Package>

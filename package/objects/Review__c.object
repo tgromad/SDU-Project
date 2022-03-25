@@ -153,14 +153,63 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Comment__c</fullName>
+        <externalId>false</externalId>
+        <label>Comment</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Rating__c</fullName>
+        <externalId>false</externalId>
+        <label>Rating</label>
+        <precision>2</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TV_Serie__c</fullName>
+        <externalId>false</externalId>
+        <label>TV Serie</label>
+        <referenceTo>TV_Serie__c</referenceTo>
+        <relationshipLabel>Reviews</relationshipLabel>
+        <relationshipName>Reviews</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
     <label>Review</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>review-{0000}</displayFormat>
         <label>Review Name</label>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Reviews</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Rating_scale</fullName>
+        <active>true</active>
+        <description>The rating must be greater than 0 and less than 10.</description>
+        <errorConditionFormula>OR(
+ Rating__c &lt;= 0,
+	Rating__c &gt; 10
+)</errorConditionFormula>
+        <errorDisplayField>Rating__c</errorDisplayField>
+        <errorMessage>Rating must be between 0 and 10 !</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

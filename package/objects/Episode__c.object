@@ -153,13 +153,63 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>TV Serie</label>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Episode_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of episode</inlineHelpText>
+        <label>Episode Name</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Season__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Season</label>
+        <referenceTo>Season__c</referenceTo>
+        <relationshipLabel>Episodes</relationshipLabel>
+        <relationshipName>Episodes</relationshipName>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>TV_Serie__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>TV Serie</label>
+        <referenceTo>TV_Serie__c</referenceTo>
+        <relationshipLabel>Episodes</relationshipLabel>
+        <relationshipName>Episodes</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Episode</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
-        <label>TV Serie Name</label>
-        <type>Text</type>
+        <displayFormat>Episode-{0000}</displayFormat>
+        <label>Episode Number</label>
+        <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>TV Series</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <pluralLabel>Episodes</pluralLabel>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Episode_Name__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

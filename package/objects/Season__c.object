@@ -153,7 +153,33 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
+    <fields>
+        <fullName>Sesaon_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>example Season 1</inlineHelpText>
+        <label>Sesaon Name</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>TV_Serie__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>TV Serie</label>
+        <referenceTo>TV_Serie__c</referenceTo>
+        <relationshipLabel>Seasons</relationshipLabel>
+        <relationshipName>Seasons</relationshipName>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <label>Season</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>season-{0000}</displayFormat>
         <label>Season Number</label>
