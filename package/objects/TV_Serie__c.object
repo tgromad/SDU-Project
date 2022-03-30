@@ -273,7 +273,8 @@
     <fields>
         <fullName>Logo__c</fullName>
         <externalId>false</externalId>
-        <formula>IMAGE(Logo_url__c , &quot;logo&quot;, 100,100)</formula>
+        <formula>IF (NOT(ISBLANK(Logo_url__c)),
+				IMAGE( Logo_url__c, &apos;logo&apos;, 285, 200),&apos;No Logo Given&apos;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Logo</label>
         <required>false</required>
@@ -285,7 +286,7 @@
         <fullName>Logo_url__c</fullName>
         <externalId>false</externalId>
         <label>Logo_url</label>
-        <required>true</required>
+        <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Url</type>
     </fields>
