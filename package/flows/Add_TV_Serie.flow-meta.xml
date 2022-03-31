@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <decisions>
+        <name>Is_there_a_TV_Serie_already_exists</name>
+        <label>Is there a TV Serie already exists?</label>
+        <locationX>182</locationX>
+        <locationY>398</locationY>
+        <defaultConnector>
+            <targetReference>Create_TV_Serie</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_exists_TV_Serie</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Object_if_exists.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_Message</targetReference>
+            </connector>
+            <label>Is exists TV Serie</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Add TV Serie {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Add TV Serie</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_TV_Serie</name>
+        <label>Create TV Serie</label>
+        <locationX>314</locationX>
+        <locationY>518</locationY>
+        <connector>
+            <targetReference>Created_Record_Screen</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Description__c</field>
+            <value>
+                <elementReference>Description</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Logo_url__c</field>
+            <value>
+                <elementReference>Logo_URL</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Year_of_production__c</field>
+            <value>
+                <elementReference>Year_Of_Production</elementReference>
+            </value>
+        </inputAssignments>
+        <object>TV_Serie__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Object_if_exists</name>
+        <label>Get Object if exists</label>
+        <locationX>182</locationX>
+        <locationY>278</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_there_a_TV_Serie_already_exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Name</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>TV_Serie__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>Created_Record_Screen</name>
+        <label>Created_Record_Screen</label>
+        <locationX>314</locationX>
+        <locationY>638</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Successfully_text</name>
+            <fieldText>&lt;p&gt;The TV Serie has been created successfully!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error_Message</name>
+        <label>Error Message</label>
+        <locationX>50</locationX>
+        <locationY>518</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Error</name>
+            <fieldText>&lt;p&gt;The record already exists!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>TV_Serie</name>
+        <label>TV Serie_Screen</label>
+        <locationX>182</locationX>
+        <locationY>158</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Get_Object_if_exists</targetReference>
+        </connector>
+        <fields>
+            <name>Name</name>
+            <dataType>String</dataType>
+            <fieldText>TV Serie Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Description</name>
+            <fieldText>Description</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Logo_URL</name>
+            <dataType>String</dataType>
+            <fieldText>Logo URL</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Year_Of_Production</name>
+            <dataType>String</dataType>
+            <fieldText>Year Of Production</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;The production year is invalid!&lt;/p&gt;</errorMessage>
+                <formulaExpression>AND(
+LEN({!Year_Of_Production}) = 4,
+Value({!Year_Of_Production}) &gt;1895,
+Value({!Year_Of_Production}) &lt;= Year(TODAY())
+)</formulaExpression>
+            </validationRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>TV_Serie</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+</Flow>
