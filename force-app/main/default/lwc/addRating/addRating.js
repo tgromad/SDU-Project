@@ -1,10 +1,11 @@
-import { LightningElement } from 'lwc';
+import { LightningElement,api } from 'lwc';
 import { createRecord } from 'lightning/uiRecordApi';
+
 
 import REVIEW_OBJECT from "@salesforce/schema/Review";
 
 export default class AddRating extends LightningElement {
-
+    @api recordId;
     reviewRecord = {};
 
     //flag
