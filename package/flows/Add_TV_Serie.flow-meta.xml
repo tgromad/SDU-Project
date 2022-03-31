@@ -172,6 +172,14 @@
             <fieldText>Year Of Production</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;The production year is invalid!&lt;/p&gt;</errorMessage>
+                <formulaExpression>AND(
+LEN({!Year_Of_Production}) = 4,
+Value({!Year_Of_Production}) &gt;1895,
+Value({!Year_Of_Production}) &lt;= Year(TODAY())
+)</formulaExpression>
+            </validationRule>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -183,5 +191,5 @@
             <targetReference>TV_Serie</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
 </Flow>
