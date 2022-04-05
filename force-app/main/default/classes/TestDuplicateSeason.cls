@@ -24,8 +24,7 @@ public class TestDuplicateSeason {
     }
     
     @isTest
-    static void addNotSameSeasons() {
-        
+    static void addNotSameSeasons(){
         TV_Serie__c tvSerie = TestDataFactory.getSimpleTvSerie('serie1','www.google.pl','sfsdfds');
         insert tvSerie;
         TV_Serie__c tvSerie2 = TestDataFactory.getSimpleTvSerie('test2','www.google.pl','sfsdfds');
@@ -48,8 +47,7 @@ public class TestDuplicateSeason {
     }
     
     @isTest
-    static void updateInvalidNameInTVSerie() {
-
+    static void updateInvalidNameInTVSerie(){
         TV_Serie__c tvSerie = TestDataFactory.getSimpleTvSerie('test1','www.google.pl','sfsdfds');
         insert tvSerie;
         List<Season__c> seasons = new List<Season__c>();
@@ -73,8 +71,7 @@ public class TestDuplicateSeason {
     }
     
     @isTest
-	static void updateValidNameInTVSerie() {
-
+	static void updateValidNameInTVSerie(){
         TV_Serie__c tvSerie = TestDataFactory.getSimpleTvSerie('test1','www.google.pl','sfsdfds');
         insert tvSerie;
         List<Season__c> seasons = new List<Season__c>();
