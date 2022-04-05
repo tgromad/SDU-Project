@@ -23,8 +23,9 @@ public with sharing class TestDataFactory {
         return season;
     }
 
-    public static TV_Serie__c getSimpleTvSerie(String url, String description) {
+    public static TV_Serie__c getSimpleTvSerie(String name,String url, String description) {
         TV_Serie__c tvserie = new TV_Serie__c();
+        tvserie.Name = name;
         tvserie.Logo_url__c = url;
         tvserie.Description__c = description;
         tvserie.Year_of_production__c = '1999';
