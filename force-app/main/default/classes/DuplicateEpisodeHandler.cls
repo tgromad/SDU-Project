@@ -11,12 +11,12 @@ public with sharing class DuplicateEpisodeHandler {
             SeasonIds.add(e.Season__c);
         }
         
-        // takes seasons that tv series id are in input values
+        // takes Episodes that Season Ids are in input values
         // 
         if(!SeasonIds.isEmpty()) {
             episodesInDB = [SELECT Id,Episode_Name__c,Season__c FROM Episode__c where Season__c IN :SeasonIds];
 
-        // create a map where key is a TV_Serie and value is List of series Names
+        // create a map where key is a Season Id and value is List of episode Names
         if(!episodesInDB.isEmpty()) {
             for(Id seasonId : SeasonIds) {
                 List<String> SeasonsName = new List<String>();
