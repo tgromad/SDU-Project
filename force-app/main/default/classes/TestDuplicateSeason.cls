@@ -12,14 +12,17 @@ public class TestDuplicateSeason {
       	insert seasonOne;
         
         String errorM = '';
+        Boolean isError = false;
         Test.startTest();
         try {
         insert seasonTwo;         
             }
         catch(Exception e){
             errorM = e.getMessage();
+            isError = true;
         }
         Test.stopTest();
+        System.assertEquals(isError,true);
         System.assertNotEquals('', errorM);
     }
     
@@ -57,7 +60,7 @@ public class TestDuplicateSeason {
         insert seasonTwo;
         
         String errorM = '';
-        
+        Boolean isError = false;
         Test.startTest();
         seasonTwo.Sesaon_Name__c = 'name';
         try {
@@ -65,8 +68,10 @@ public class TestDuplicateSeason {
         }
         catch(Exception e){
             errorM = e.getMessage();
+            isError = true;
         }
         Test.stopTest();
+        System.assertEquals(isError,true);
         System.assertNotEquals('', errorM);     
     }
     
