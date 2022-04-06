@@ -11,12 +11,12 @@ public with sharing class DuplicateEpisodeHandler {
             SeasonIds.add(e.Season__c);
         }
         
-        // takes Episodes that Season Ids are in input values
+        // takes seasons that tv series id are in input values
         // 
         if(!SeasonIds.isEmpty()) {
             episodesInDB = [SELECT Id,Episode_Name__c,Season__c FROM Episode__c where Season__c IN :SeasonIds];
 
-        // create a map where key is a Season Id and value is List of episode Names
+        // create a map where key is a TV_Serie and value is List of series Names
         if(!episodesInDB.isEmpty()) {
             for(Id seasonId : SeasonIds) {
                 List<String> SeasonsName = new List<String>();
@@ -40,7 +40,7 @@ public with sharing class DuplicateEpisodeHandler {
         if(!mapEpisodes.keySet().isEmpty()) {
         	for(Episode__c episode : episodes) {
             	if(mapEpisodes.get(episode.Season__c).contains(episode.Episode_Name__c)){
-                	episode.addError('There is already an episode of the same name this season!');
+                	episode.addError('There is already an episode of the same name on this season!');
                 	continue;
             }
         }

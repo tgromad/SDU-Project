@@ -12,16 +12,20 @@ public with sharing class TestDuplicateEpisode {
         insert episodeOne;
         Episode__c episodeTwo = TestDataFactory.getSimpleEpisode('name',seasonOne.Id, 'dfsdf');
         
+        
+        Boolean isError = false;
         String errorM = '';
         Test.startTest();
         try {
-        insert episodeTwo;         
+        insert episodeTwo;  
             }
-        catch(Exception e){
+        catch(DmlException e) {
             errorM = e.getMessage();
+			isError = true;            
         }
         Test.stopTest();
-        System.assertNotEquals('', errorM);
+        System.assertNotEquals('',errorM);
+        System.assertEquals(isError,true);       
     }
     
     @isTest
@@ -59,18 +63,22 @@ public with sharing class TestDuplicateEpisode {
         insert episodeOne;
         Episode__c episodeTwo = TestDataFactory.getSimpleEpisode('name2',seasonOne.Id, 'dfsdf');
         insert episodeTwo;
+        
         String errorM = '';
+        Boolean isError = false;
         
         Test.startTest();
         episodeTwo.Episode_Name__c = 'name';
         try {
         update episodeTwo;
         }
-        catch(Exception e){
-            errorM = e.getMessage();
+        catch(DmlException e) {
+			errorM = e.getMessage();
+            isError = true;            
         }
         Test.stopTest();
-        System.assertNotEquals('', errorM);     
+        System.assertNotEquals('',errorM);
+        System.assertEquals(isError,true);
     }
     
     @isTest
