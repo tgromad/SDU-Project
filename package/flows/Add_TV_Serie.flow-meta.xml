@@ -191,5 +191,5 @@ Value({!Year_Of_Production}) &lt;= Year(TODAY())
             <targetReference>TV_Serie</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>
