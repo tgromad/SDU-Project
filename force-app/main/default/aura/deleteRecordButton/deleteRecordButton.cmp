@@ -1,0 +1,11 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId"
+                 access="global"
+                controller="TvSerieController" >
+    <div class="Delete Record">
+        <lightning:card iconName="action:delete" title="Delete TV Serie">
+            <div class="slds-p-horizontal--small">
+                <lightning:button label="Delete" variant="destructive" onclick="{!c.handleDeleteRecord}"/>
+            </div>
+        </lightning:card>
+    </div>
+</aura:component>
