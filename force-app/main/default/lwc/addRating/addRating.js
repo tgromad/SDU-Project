@@ -1,46 +1,28 @@
 import { LightningElement,api } from 'lwc';
 import { createRecord } from 'lightning/uiRecordApi';
 
-
-import REVIEW_OBJECT from "@salesforce/schema/Review";
-
 export default class AddRating extends LightningElement {
-    @api recordId;
-    reviewRecord = {};
-
-    //flag
-    isLoading = false;
-
-    hanldeChange(event) {
-        this.reviewRecord[event.target.name] = event.target.name;
+    @api recordId
+    rating;
+    comment;
+    // Change Handlers.
+    ratingChangedHandler(event){
+        this.rating = event.target.value;
     }
+    commentChangeHandler(event){
+        this.comment = event.target.value;
+    }
+    // Insert record.
     createReview(){
-        this.isLoading = true;
-        const fields = this.reviewRecord;
-        const recordInput = {apiName: REVIEW_OBJECT.objectApiName, fields};
-
-createRecord(recordInput).then((Review)=>{
-    this.reviewId = Review.id;
-    this.dispatchEvent(
-        new ShowToastEvent({
-            title: "Success",
-            message: "Review Created successfully!",
-            variant: "sucess"
-        })
-    );
-    this.reviewRecord = {};
-    })
-    .catch((error) => {
-        this.dispatchEvent(
-            new ShowToastEvent({
-                title: "Error creating record",
-                message: reduceErrors(error).join(", "),
-                variant: "error"
-            })
-        );
-    })
-    .finally(() => {
-        this.isLoading = false;
-    });
-}
+        // Creating mapping of fields of Account with values
+        var fields = {'Rating__c' : this.rating, 'Comment__c' : this.comment,'TV_Serie__c' : this.recordId};
+        // Record details to pass to create method with api name of Object.
+        var objRecordInput = {'apiName' : 'Review__c', fields};
+        // LDS method to create record.
+        createRecord(objRecordInput).then(response => {
+            alert('Review created with Id: ' +response.id);
+        }).catch(error => {
+            alert('Error: ' +JSON.stringify(error));
+        });
+    }
 }
