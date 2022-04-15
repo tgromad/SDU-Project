@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Create Review" icon-name="standard:review">
+        <div class="slds-var-m-around_small slds-is-relative">
+            <lightning-layout>
+                <lightning-layout-item size="6">
+                    <!-- Displaying fields to get information. -->
+                    <lightning-input class="slds-p-around_medium" label="Rating (1-9)" type="number" name="rating" 
+                        min="1" max="9" onchange={ratingChangedHandler}></lightning-input>
+                    <lightning-input class="slds-p-around_medium" label="Comment" name="comment" 
+                        onchange={commentChangeHandler}></lightning-input>
+                    <br/>
+                    <lightning-button class="slds-m-left_x-small" label="Create Review" variant="brand" 
+                        onclick={createReview}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>
