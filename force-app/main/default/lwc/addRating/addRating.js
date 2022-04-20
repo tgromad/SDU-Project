@@ -20,9 +20,15 @@ export default class AddRating extends LightningElement {
         var objRecordInput = {'apiName' : 'Review__c', fields};
         // LDS method to create record.
         createRecord(objRecordInput).then(response => {
-            alert('Review created with Id: ' +response.id);
+            alert('Review created!');
+            this.updateRecordView();
         }).catch(error => {
             alert('Error: ' +JSON.stringify(error));
         });
+    }
+    updateRecordView() {
+       setTimeout(() => {
+            eval("$A.get('e.force:refreshView').fire();");
+       }, 1000); 
     }
 }
