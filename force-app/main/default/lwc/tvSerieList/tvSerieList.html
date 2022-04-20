@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title = "TV Serie">
+       <table class="slds-table slds-table_cell-buffer slds-table_bordered" >
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Production Year</th>
+                    <th>Rating</th>                 
+                </tr>
+            </thead>
+                <template for:each={tvSerieList.data} for:item="Obj" for:index="index">
+                 <tr key={Obj.Id}>
+                     <td><lightning-input type="radio" name="radioButtonSelect"
+                         value={Obj.Id} onchange={handleChangeRadio}></lightning-input></td>
+                     <td>{Obj.Name}</td>
+                     <td>{Obj.Year_of_production__c}</td>
+                     <td>{Obj.Rating__c}</td>       
+                 </tr>
+             </template>
+       </table>
+</lightning-card> 
+<div class="slds-m-bottom--medium">
+    <c-reviews-detail tv-serie-id={tvSerieId}></c-reviews-detail>
+</div>
+</template>
